@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="93b6d72c-0ff7-4a40-ad2c-1ab107b7b3bd" name="Default Changelist" comment="" />
+    <list default="true" id="93b6d72c-0ff7-4a40-ad2c-1ab107b7b3bd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/db/captura.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/db/tables.sql" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/DataServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="773">
-              <caret line="206" lean-forward="true" selection-start-line="206" selection-end-line="206" />
+              <caret line="206" selection-start-line="206" selection-end-line="206" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -114,7 +117,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/SubtitleServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -167,6 +170,9 @@
     <replaceStrings>
       <replace>mseconds</replace>
     </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -233,6 +239,7 @@
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -306,6 +313,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -413,12 +421,12 @@
       <workItem from="1560025777099" duration="37031000" />
       <workItem from="1560136986128" duration="60000" />
       <workItem from="1560700041219" duration="44201000" />
-      <workItem from="1561096203959" duration="2986000" />
+      <workItem from="1561096203959" duration="3588000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95689000" />
+    <option name="totallyTimeSpent" value="96291000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -431,7 +439,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25053304" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -847,7 +854,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/DataServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="773">
-          <caret line="206" lean-forward="true" selection-start-line="206" selection-end-line="206" />
+          <caret line="206" selection-start-line="206" selection-end-line="206" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -877,7 +884,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/SubtitleServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
