@@ -1,6 +1,8 @@
 package service;
 
 import model.ActionUnitInfo;
+import model.Video;
+import model.VideoSub;
 import subtitleFile.Caption;
 
 import java.util.HashMap;
@@ -16,7 +18,11 @@ public interface DataService {
 
     void saveSubtitles(String id, TreeMap<Integer, Caption> caption);
 
-    void saveActionUnits(HashMap<String, List<ActionUnitInfo>> ausValues);
+    void saveActionUnitsMap(HashMap<String, List<ActionUnitInfo>> ausValues);
 
     void saveAUs(String id, ActionUnitInfo aus);
+
+    List<Video> consultaVideos();
+
+    List<VideoSub> consultaSubByVideoId(int id);
 }

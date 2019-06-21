@@ -179,7 +179,7 @@ public class DataServiceImpl implements DataService {
     }
 
     @Override
-    public void saveActionUnits(HashMap<String, List<ActionUnitInfo>> ausValues) {
+    public void saveActionUnitsMap(HashMap<String, List<ActionUnitInfo>> ausValues) {
         ausValues.forEach((id, ausList) -> {
             ausList.forEach(aus -> {
                 this.saveAUs(id, aus);
@@ -203,4 +203,15 @@ public class DataServiceImpl implements DataService {
         actionsDao.insertActionUnit(aus);
     }
 
+    @Override
+    public List<Video> consultaVideos() {
+        VideoDAO videoDAO = new VideoDAO();
+        return videoDAO.getAllVideos();
+    }
+
+    @Override
+    public List<VideoSub> consultaSubByVideoId(int id) {
+        VideoSubDAO videoSubDAO = new VideoSubDAO();
+        return videoSubDAO.getAllVideoSub(id);
+    }
 }

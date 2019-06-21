@@ -6,6 +6,8 @@ import model.Video;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class VideoDAO{
@@ -18,7 +20,10 @@ public class VideoDAO{
             PreparedStatement pstmt = con.getConnection().prepareStatement("Select id, title, data_criacao from video where title = ?");
             pstmt.setString(1, titulo);
             ResultSet rs = pstmt.executeQuery();
-            video = getVideo(rs);
+            /**
+             * Deve vir apenas 1 vídeo
+             * */
+            video = getVideo(rs).get(0);
             pstmt.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -28,22 +33,24 @@ public class VideoDAO{
         return video;
     }
 
-    private Video getVideo(ResultSet rs) {
-        Video v = null;
+    private List<Video> getVideo(ResultSet rs) {
+        List<Video> listaVideo = new ArrayList<Video>();
         try {
             if (rs != null && rs.next()) {
                 rs.beforeFirst();
-                v = new Video();
+
                 while (rs.next()) {
+                    Video v = new Video();
                     v.setId(rs.getInt("id"));
                     v.setTitle(rs.getString("title"));
                     v.setDataCriacao(rs.getDate("data_criacao"));
+                    listaVideo.add(v);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return v;
+        return listaVideo;
     }
 
     public Video insertVideo(Video video) {
@@ -62,5 +69,24 @@ public class VideoDAO{
         }
 
         return this.findByTitle(video.getTitle());
+    }
+
+    public List<Video> getAllVideos() {
+        List<Video> listaVideo = new ArrayList<Video>();
+
+        DatabaseConImpl con = new DatabaseConImpl();
+        try {
+
+            PreparedStatement pstmt = con.getConnection().prepareStatement("Select id, title, data_criacao from video");
+
+            ResultSet rs = pstmt.executeQuery();
+            listaVideo = getVideo(rs);
+            pstmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.closeConnection();
+        }
+        return listaVideo;
     }
 }

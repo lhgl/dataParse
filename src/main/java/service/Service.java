@@ -1,7 +1,6 @@
-import service.impl.ActionUnitsServiceImpl;
-import service.impl.FileServiceImpl;
-import service.impl.InfoServiceImpl;
-import service.impl.SubtitleServiceImpl;
+package service;
+
+import service.impl.*;
 
 import java.io.File;
 import java.util.List;
@@ -41,5 +40,9 @@ public class Service {
 
     }
 
+    public void processaTokensFromSubtitles(){
+        TokenServiceImpl tokenService = new TokenServiceImpl();
+        tokenService.process();
+    }
 
 }
