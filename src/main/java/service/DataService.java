@@ -1,8 +1,6 @@
 package service;
 
-import model.ActionUnitInfo;
-import model.Video;
-import model.VideoSub;
+import model.*;
 import subtitleFile.Caption;
 
 import java.util.HashMap;
@@ -25,4 +23,12 @@ public interface DataService {
     List<Video> consultaVideos();
 
     List<VideoSub> consultaSubByVideoId(int id);
+
+    List<VideoSubTokenTag> consultaTokensByVideoSubId(int id);
+
+    VideoSubTag salvarSubTags(String tag);
+
+    void salvarSubTokens(VideoSubTokenTag token);
+
+    VideoSubTag consultarSubTag(String tag);
 }

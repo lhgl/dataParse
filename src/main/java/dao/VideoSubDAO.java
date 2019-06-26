@@ -27,7 +27,7 @@ public class VideoSubDAO {
              * Foi necessário realizar transaformação de milissecond para String
              *
              * https://bugs.openjdk.java.net/browse/JDK-8186415
-             * https://bugs.mysql.com/bug.php?id=76775
+             *              * https://bugs.mysql.com/bug.php?id=76775
              *
              *
              *  pstmt.setTime(2, new Time(videoSub.getStartTime().getMseconds()));

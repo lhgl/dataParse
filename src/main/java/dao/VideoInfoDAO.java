@@ -5,7 +5,7 @@ import model.VideoInfo;
 
 import java.sql.PreparedStatement;
 
-public class VideoInfoDAO{
+public class VideoInfoDAO {
 
     public void insertVideoInfo(VideoInfo v) {
         DatabaseConImpl con = new DatabaseConImpl();

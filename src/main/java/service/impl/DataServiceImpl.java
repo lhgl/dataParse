@@ -1,13 +1,7 @@
 package service.impl;
 
-import dao.ActionUnitDAO;
-import dao.VideoDAO;
-import dao.VideoInfoDAO;
-import dao.VideoSubDAO;
-import model.ActionUnitInfo;
-import model.Video;
-import model.VideoInfo;
-import model.VideoSub;
+import dao.*;
+import model.*;
 import service.DataService;
 import subtitleFile.Caption;
 
@@ -213,5 +207,29 @@ public class DataServiceImpl implements DataService {
     public List<VideoSub> consultaSubByVideoId(int id) {
         VideoSubDAO videoSubDAO = new VideoSubDAO();
         return videoSubDAO.getAllVideoSub(id);
+    }
+
+    @Override
+    public List<VideoSubTokenTag> consultaTokensByVideoSubId(int id) {
+        VideoSubTokenTagDAO tokenTagDAO = new VideoSubTokenTagDAO();
+        return tokenTagDAO.consultaTokensByVideoSubId(id);
+    }
+
+    @Override
+    public VideoSubTag salvarSubTags(String tag) {
+        VideoSubTagDAO tagDAO = new VideoSubTagDAO();
+        return tagDAO.salvarSubTags(tag);
+    }
+
+    @Override
+    public void salvarSubTokens(VideoSubTokenTag token) {
+        VideoSubTokenTagDAO tokenTagDAO = new VideoSubTokenTagDAO();
+        tokenTagDAO.salvarSubTokens(token);
+    }
+
+    @Override
+    public VideoSubTag consultarSubTag(String tag) {
+        VideoSubTagDAO tagDAO = new VideoSubTagDAO();
+        return tagDAO.consultarSubTags(tag);
     }
 }

@@ -6,7 +6,7 @@ import subtitleFile.Time;
 
 import java.sql.PreparedStatement;
 
-public class ActionUnitDAO{
+public class ActionUnitDAO {
     public void insertActionUnit(ActionUnitInfo aus) {
         DatabaseConImpl con = new DatabaseConImpl();
         try {

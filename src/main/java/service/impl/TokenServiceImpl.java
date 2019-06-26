@@ -2,6 +2,8 @@ package service.impl;
 
 import model.Video;
 import model.VideoSub;
+import model.VideoSubTag;
+import model.VideoSubTokenTag;
 import opennlp.tools.postag.POSModel;
 import opennlp.tools.postag.POSTaggerME;
 import opennlp.tools.sentdetect.SentenceDetectorME;
@@ -17,6 +19,10 @@ import java.util.List;
 
 public class TokenServiceImpl implements TokenService {
 
+    private static String sentenceModel = "D:\\Git\\dataParser\\src\\main\\PLNModels\\pt-sent.bin";
+
+    private static String perceptronModel = "D:\\Git\\dataParser\\src\\main\\PLNModels\\pt-pos-perceptron.bin";
+
     @Override
     public void process() {
         DataServiceImpl dataService = new DataServiceImpl();
@@ -24,47 +30,47 @@ public class TokenServiceImpl implements TokenService {
         listaVideos.forEach(video -> {
             List<VideoSub> listaSub = dataService.consultaSubByVideoId(video.getId());
             listaSub.forEach(sub -> {
-                InputStream inputStream = null;
+
+                List<VideoSubTokenTag> vstt = dataService.consultaTokensByVideoSubId(sub.getId());
 
                 try {
-                    inputStream = new FileInputStream("D:\\Git\\dataParser\\src\\main\\PLNModels\\pt-sent.bin");
+                    InputStream inputStream = new FileInputStream(sentenceModel);
 
-                    SentenceModel model =  new SentenceModel(inputStream);
-
+                    SentenceModel model = new SentenceModel(inputStream);
                     SentenceDetectorME detector = new SentenceDetectorME(model);
-
                     String[] sequences = detector.sentDetect(sub.getSub());
 
-                    inputStream = new FileInputStream("D:\\Git\\dataParser\\src\\main\\PLNModels\\pt-pos-perceptron.bin");
-
-                    POSModel modelPOS = new POSModel(inputStream);
-
+                    InputStream inputStream2 = new FileInputStream(perceptronModel);
+                    POSModel modelPOS = new POSModel(inputStream2);
                     POSTaggerME tagger = new POSTaggerME(modelPOS);
-
                     SimpleTokenizer simpleTokenizer = SimpleTokenizer.INSTANCE;
 
+
                     for (String s : sequences) {
-                        //Tokenizing the given sentence
                         String tokens[] = simpleTokenizer.tokenize(s);
 
-                        String[] tags = tagger.tag(tokens);
-                        for (int i = 0; i < tokens.length; i++) {
-                            System.out.println(tokens[i] + " - " + tags[i]);
+                        //SE A LEGENDA NÃO FOI PROCESSADA, REALIZA O PROCESSAMENTO
+                        if (vstt == null || vstt.isEmpty()) {
 
-//                                VideoSubTokenTag vstt = consultaTokensByVideoSubId(sub.getId());
-//                                if (vstt == null){
-//                                //TAGS SÃO AS MORFOLOGIAS
-//                                VideoSubTag tag = salvarSubTags(tags[i]);
-//
-//                                VideoSubTokenTag token = new VideoSubTokenTag();
-//                                token.setToken(tokens[i]);
-//                                token.setTag(tag.getTag());
-//                                token.setVideoSubId(sub.getId());
-//
-//                                //TOKEN SÃO AS PALAVRAS
-//                                salvarSubTokens(token);
-//                              }
-//
+                            String[] tags = tagger.tag(tokens);
+
+                            for (int i = 0; i < tokens.length; i++) {
+                                //System.out.println(tokens[i] + " - " + tags[i]);
+                                VideoSubTag tag = dataService.consultarSubTag(tags[i]);
+                                if (tag == null) {
+                                    //TAGS SÃO AS MORFOLOGIAS
+                                    tag = dataService.salvarSubTags(tags[i]);
+                                }
+
+                                VideoSubTokenTag token = new VideoSubTokenTag();
+                                token.setToken(tokens[i]);
+                                token.setTag(tag.getTag());
+                                token.setVideoSubId(sub.getId());
+
+                                //TOKEN SÃO AS PALAVRAS
+                                dataService.salvarSubTokens(token);
+
+                            }
                         }
                     }
                 } catch (FileNotFoundException e) {
@@ -72,6 +78,7 @@ public class TokenServiceImpl implements TokenService {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
             });
         });
     }

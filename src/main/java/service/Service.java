@@ -40,7 +40,7 @@ public class Service {
 
     }
 
-    public void processaTokensFromSubtitles(){
+    public void processaTokensFromSubtitles() {
         TokenServiceImpl tokenService = new TokenServiceImpl();
         tokenService.process();
     }
