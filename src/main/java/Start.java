@@ -8,7 +8,8 @@ public class Start {
 //        service.processaArquivoSubtitles();
 //        service.processaArquivoInfos();
 //        service.processaArquivoAUs();
-        service.processaTokensFromSubtitles();
+//        service.processaTokensFromSubtitles();
+        service.processaApriori();
         /**
          * TODO Avaliar Refactor deste programa, o mesmo está se tornando um grande serviço com várias regras de negócio envolvidas
          */

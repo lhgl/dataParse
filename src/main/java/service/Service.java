@@ -45,4 +45,9 @@ public class Service {
         tokenService.process();
     }
 
+    public void processaApriori(){
+        AssociationRulesImpl ar = new AssociationRulesImpl();
+        System.out.println(ar.process());
+    }
+
 }
